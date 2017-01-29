@@ -63,3 +63,36 @@ Slack: https://nd101.slack.com/messages/announcements/
     you'd get fx(x, y) = 2x + 2.
   - Think of the 3d graph for a multi variable function and slicing it with a
     plane, then using the intersect against that plane to find slope.
+
+### Draft Notes (to clean)
+
+Maybe come back to this video and implmement the nueral network:
+https://classroom.udacity.com/nanodegrees/nd101/parts/2a9dba0b-28eb-4b0e-acfa-bdcf35680d90/modules/329a736b-1700-43d4-9bf0-753cc461bebc/lessons/c3dd053a-7660-4fc5-8bdc-53301ac7ce51/concepts/9f6f9683-3f44-43a3-9d5b-f30fad2b6127
+
+http://natureofcode.com/book/chapter-10-neural-networks/
+https://www.oreilly.com/learning/hello-tensorflow
+https://www.tensorflow.org/tutorials/mnist/beginners/
+
+https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+
+Add notes from notebook
+  - Perceptron
+  - single layer feed forward network
+
+law of intelligence endcoded in the universe and we are discovering it
+
+tensor calculus
+
+vector is a 1d tensor
+matrix is a 2d tensor
+list of list of list is a 3d tensor, and so on.
+
+libraries used
+- pandas
+- tensorflow
+- numpy
+- matplot
+
+softmax = sigmoid (out activation fuction?)
+
+cost function - mean squared error
