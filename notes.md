@@ -150,9 +150,22 @@ gradient descent (partial derivatives).
 sigmoid has an output (y) range of 0 to 1. it can be considered a probability of
 success.
 
+---
+
 nueral networks are getting better than humans with things because of their pure
 focus. a nueral network doesn't have any distractions and only knows to do one
 thing. it'd be like a human that knew nothing but chess and didn't get tired or
 distracted or have any feelings.
+
+Logic gates are powerful, but perceptrons allow them to learn and change
+behavior - adapt. Basically creating a logic flow / program by learning. Learning happens with
+derivatives at the math level.
+
+The current largest network is 1B nuerons - the human brain is 100B. It might
+take that level of complexity for true human levels of understanding.
+
+It's like a flexible set of logic gates that can be trained to have a certain
+output.  The training only takes the inputs and what you'd like the outputs to
+be.
 
 ---
