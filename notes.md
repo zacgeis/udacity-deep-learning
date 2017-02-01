@@ -96,3 +96,63 @@ libraries used
 softmax = sigmoid (out activation fuction?)
 
 cost function - mean squared error
+
+---
+
+logistic regression is the building block for nueral networks.
+- think line drawn through two sets of colored points on a graph.
+- an ideal logic regression line will split the two sets of points in half.
+- to get an ideal line, gradient descent is used. step in the direction that
+  minimizes the error count.
+
+a logic regression can have multiple lines that split the data in different
+ways. this is what a nueral network is made up of.
+
+the perceptron is the base unit of a nueral network
+
+weights and bias determine the overall importance of a perceptron
+
+generally, this is how a perceptron works
+- sum all inputs times their respective weights.
+- take the summed value above and add a bias
+- take the previous value and run it through an activation function
+- the activation function is used to generate an output value for the entire
+  perceptron.
+- an example activation function is heaviside which returns 1 if the value is
+  greater than or equal to 0 and returns 0 if the value is less than 0.
+
+an and perceptron would work like the following
+point (0, 0) = 0
+point (0, 1) = 0
+point (1, 0) = 0
+point (1, 1) = 1
+it could be implemented with:
+weight1 = 1.0
+weight2 = 1.0
+bias = -2.0
+
+not, or, and can all be implemented in perceptrons, but they work with ranges of
+values instead of binary values
+you can chain together perceptrons to build an xor nueral network.
+nueral networks can solve any problem a computer can solve
+- think about logic gates making up a cpu. inefficent though.
+the real power of a nueral network is not building them by hand, but the ability
+for them to set their own weights and biases.
+
+list of common activation functions
+- logistic (sigmoid)
+- tanh
+- softmax
+
+these functions are continous and differentiable which allow training via
+gradient descent (partial derivatives).
+
+sigmoid has an output (y) range of 0 to 1. it can be considered a probability of
+success.
+
+nueral networks are getting better than humans with things because of their pure
+focus. a nueral network doesn't have any distractions and only knows to do one
+thing. it'd be like a human that knew nothing but chess and didn't get tired or
+distracted or have any feelings.
+
+---
