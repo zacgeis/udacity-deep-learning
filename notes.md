@@ -168,4 +168,12 @@ It's like a flexible set of logic gates that can be trained to have a certain
 output.  The training only takes the inputs and what you'd like the outputs to
 be.
 
+It'd be interesting to train a large neural network to be a standard VM with op
+codes and memory.
+
+Originally modeled after human neurons. They can be trained without gradient
+descent, but gradient descent is where much of the underlying power and speed
+comes from. It's basically a search function looking for the best possible
+configuration of numbers to make the best network.
+
 ---
