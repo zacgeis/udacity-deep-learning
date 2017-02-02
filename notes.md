@@ -177,3 +177,22 @@ comes from. It's basically a search function looking for the best possible
 configuration of numbers to make the best network.
 
 ---
+
+Khan video on gradient descent:
+https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/gradient
+
+Momentum can be used to avoid falling into local minima with gradient descent
+http://sebastianruder.com/optimizing-gradient-descent/index.html#momentum
+
+Common metric for error function is sum of squared errors (SSE)
+the square function is nice because
+- it keeps all values positive
+- it penalizes large values with large increases in error
+
+Gradient = Slope
+
+When doing gradient descent, you derive the activation function.
+
+Neural Net output = activation_function(dot(weights, inputs))
+
+epocs is the number of times to repeat
