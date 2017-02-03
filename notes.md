@@ -196,3 +196,10 @@ When doing gradient descent, you derive the activation function.
 Neural Net output = activation_function(dot(weights, inputs))
 
 epocs is the number of times to repeat
+
+---
+
+https://docs.scipy.org/doc/numpy/user/basics.types
+
+docker run -it gcr.io/tensorflow/tensorflow /bin/bash
+newgrp docker
