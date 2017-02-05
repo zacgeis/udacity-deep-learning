@@ -203,3 +203,36 @@ https://docs.scipy.org/doc/numpy/user/basics.types
 
 docker run -it gcr.io/tensorflow/tensorflow /bin/bash
 newgrp docker
+
+---
+
+partial derivative of the error with respect to each of the weights
+the sum of squared errors is what we are trying to minimize
+the sum of squared errors is what we need partial derivatives for
+since larger inputs drive more error, we scale the weight proportional to this
+term
+the resulting gradient tells us the proportional effect of the term on the
+output
+  - if there's a large gradeint (slope), then a change to the term will have a
+    large effect on the output
+  - if there's a small gradient, then a change to the term will have a small
+    effect on the output
+  - adding this term into the delta adjustment will cause larger gradients to
+    produce larger steps, effecting the change in the error more
+
+delta_j = (target_j - actual_j) * f_prime(unit_input_j)
+delta_w_i_j = learning_rate * delta_j * input_i
+
+to get the hidden unit error, we scale the overall error by the weight
+connecting the ouput to the hidden unit. (how much of the error is the hidden
+weight responsible for)
+
+once you have the error, use this to calculate the gradient descent step
+learning rate * ouput unit error * hidden unit activation values (activation
+value is after it went through the sigmoid function)
+
+docker ps
+docker exec -it ${container_id} /bin/bash
+docker stop ${container_id}
+docker run -p 8888:8888 -p 6006:6006 gcr.io/tensorflow/tensorflow:latest-py3
+
