@@ -1,2 +1,2 @@
-FROM gcr.io/tensorflow/tensorflow
-WORKDIR /udacity-deep-learning
+FROM gcr.io/tensorflow/tensorflow:latest-py3
+WORKDIR /jnotebooks
