@@ -269,3 +269,40 @@ inputHiddenChanges = (deltaHidden * input.transpose) * learningRate
 review https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
 and http://cs231n.github.io/
 http://staff.itee.uq.edu.au/janetw/cmc/chapters/BackProp/index2.html
+
+---
+
+backprop is nothing more than the chain rule applied with an iterative
+approach - basically remembering previous derivaties.
+
+when backflowing the gradients, the starting point is the direction of the error
+function derivative, then it goes back thourgh the weighted sums and sigmoid
+applications, it's important to take into account both.
+
+The gradient backflow starts with an error as the initial derivate input. It
+either looks to increase the network or decrease it by a step
+
+TODO Create simple 2-3-1 neural network with only variable names and show where
+the full derivations come from. Use multiple dimensional array, but index
+everything by hand and don't use sum functions.
+
+Always try to start with the simplest possible example first and ensure that you
+complete understand it.
+
+Take time to rephase things in your own words after reading to ensure you really
+understand it.
+
+Here are the best resources I've found:
+- https://iamtrask.github.io/2015/07/27/python-network-part2/
+- http://iamtrask.github.io/2015/07/12/basic-python-network/
+- http://karpathy.github.io/neuralnets/
+- https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+- https://en.m.wikipedia.org/wiki/Delta_rule
+- https://en.wikipedia.org/wiki/Chain_rule
+
+Read up more on these: Gradients, derivates, partial derivates, dot product,
+matrix and vectors, chain rule
+
+Take time to sum up notes to this point.
+
+---
