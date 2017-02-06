@@ -266,3 +266,6 @@ inputHiddenChanges = (deltaHidden * input.transpose) * learningRate
 
 ---
 
+review https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+and http://cs231n.github.io/
+http://staff.itee.uq.edu.au/janetw/cmc/chapters/BackProp/index2.html
