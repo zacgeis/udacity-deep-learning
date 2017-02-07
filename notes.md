@@ -306,3 +306,7 @@ matrix and vectors, chain rule
 Take time to sum up notes to this point.
 
 ---
+
+add both of these back in
+#self.weights_input_to_hidden += (self.lr * inputs.T * hidden_grad.T)
+#adding T fixed everyinth in the run function
