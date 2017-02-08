@@ -328,3 +328,16 @@ Nx1
 
 Gradient is a vector of slopes. Add this to notes.
 http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
+
+---
+
+This book looks great: https://www.manning.com/books/grokking-deep-learning
+
+---
+
+Model Evaluation and Validation
+
+---
+
+Sentiment analysis is basically identifying subjective information in text.
+
