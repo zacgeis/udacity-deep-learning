@@ -299,6 +299,7 @@ Here are the best resources I've found:
 - https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
 - https://en.m.wikipedia.org/wiki/Delta_rule
 - https://en.wikipedia.org/wiki/Chain_rule
+- http://colah.github.io/posts/2015-08-Backprop/
 
 Read up more on these: Gradients, derivates, partial derivates, dot product,
 matrix and vectors, chain rule
@@ -310,3 +311,20 @@ Take time to sum up notes to this point.
 add both of these back in
 #self.weights_input_to_hidden += (self.lr * inputs.T * hidden_grad.T)
 #adding T fixed everyinth in the run function
+
+there's a case where both dot and multiplication will return the same value
+3x1 (x/.) 1x2
+
+save feedback
+larger hidden layer takes longer to train
+
+```
+final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output.T)
+final_outputs = final_inputs.T #TODO: Adding a T here sped everything up
+and fixed all issues?
+Sounds like it might have to do with the MSE function below and 1xN vs
+Nx1
+```
+
+Gradient is a vector of slopes. Add this to notes.
+http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
