@@ -64,7 +64,7 @@ and: http://cs231n.github.io/optimization-2/#patters
 - Great resource for determining the number of hidden nodes and layers:
   - http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
 
-### Notes
+### Basic Neural Network Notes
 
 - Deep Learning is a subset of Machine Learning.
 - Machine Learning can rougly be broken apart to three categories
@@ -263,10 +263,57 @@ size combined, divided by two.
 - For some great thoughts on how a model should look, reference submission 1
 feedback located in this repository.
 
-Sentiment analysis is basically identifying subjective information in text.
-  - Does the text have a positive tone or negative?
+### Model Evaluation and Validation Notes
 
-Model Evaluation and Validation
+- It's important to split your dataset into three parts.
+  - training set: used to actually train your model
+  - validation set: used to verify during the training process
+  - test set: only used at the very end after training to verify accuracy
+
+- Two different types of models
+  - Regression models: used to predict a numeric value.
+  - Classification models: used to predict a label (ex yes/no)
+
+- The golden rule is to never use the test set to actually train data.
+
+- A confusion matrix is split into four quadrants:
+  - model: positive, actual: positive (correct)
+  - model: positive, actual: negative (incorrect)
+  - model: negative, actual: positive (incorrect)
+  - model: negative, actual: negative (correct)
+- Accuracy is both correct categories added together over the total number of
+data points.
+
+- Mean absolute error is the square of differences from the regression line.
+
+- R2 score is two regressions compared. Generally, your newly created regression
+to a simpler linear regression.
+
+- Overfitting is too specific and over complicated
+  - Error due to variance
+  - Good on training set, bad on testing set
+- Underfitting is too general and not complicated enough
+  - Error due to bias
+  - Bad on both training and testing set
+- Good fit is good on both the training and testing sets
+
+- Regression models can have different levels of complexity
+  - 1 degree = linear
+  - 2 degree = quadratic
+  - 6 degree = polynomial
+
+- The goal of training a model is to find where the training and testing errors
+are the closest.
+
+- K-Fold Cross Validation is where you break apart your data set into K number
+of bins. You then select one bin to be a testing bin and use the rest as
+training.  You can then repeat the previous process with different testing bins
+to fully utilize your dataset.
+
+### Sentiment Analysis Notes
+
+- Sentiment analysis is basically identifying subjective information in text.
+  - Does the text have a positive tone or negative?
 
 ### Docker Notes
 
