@@ -11,7 +11,7 @@ Slack: https://nd101.slack.com/messages/announcements/
 
 #### Books
 
-- https://www.manning.com/books/grokking-deep-learning
+- Buy this book when the paper copy comes out: https://www.manning.com/books/grokking-deep-learning
 - http://neuralnetworksanddeeplearning.com/
 - http://www.deeplearningbook.org/
 
@@ -21,10 +21,48 @@ Slack: https://nd101.slack.com/messages/announcements/
 - https://www.khanacademy.org/math/multivariable-calculus
   - https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivatives/v/partial-derivatives-introduction
 
-#### Videos
+#### TODO
+
+- Gradients, partial derivates, dot product, matrix, vectors, chain rule,
+gradient descent, scalable vector machine (SVM)
+- There's a case where both dot and multiplication will return the same value
+3x1 (x/.) 1x2
+- TODO Create simple 2-3-1 neural network with only variable names and show where
+the full derivations come from. Use multiple dimensional array, but index
+everything by hand and don't use sum functions.
+
+#### Resources
 
 - Gradient descent: https://youtu.be/eikJboPQDT0
 - Partial derivatives: https://youtu.be/1CMDS4-PKKQ
+
+- Some of the best resources I've found:
+  - https://iamtrask.github.io/2015/07/27/python-network-part2/
+  - http://iamtrask.github.io/2015/07/12/basic-python-network/
+  - http://karpathy.github.io/neuralnets/
+  - https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+  - https://en.m.wikipedia.org/wiki/Delta_rule
+  - https://en.wikipedia.org/wiki/Chain_rule
+  - http://colah.github.io/posts/2015-08-Backprop/
+  - http://cs231n.github.io/
+  - http://staff.itee.uq.edu.au/janetw/cmc/chapters/BackProp/index2.html
+  - http://natureofcode.com/book/chapter-10-neural-networks/
+  - https://www.oreilly.com/learning/hello-tensorflow
+  - https://www.tensorflow.org/tutorials/mnist/beginners/
+  - https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+history of deep learning: https://vimeo.com/170189199
+understanding back prop: https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.eazs6hdr1
+stanford lecture on back prop: https://www.youtube.com/watch?v=59Hbtz7XgjM
+latex primer from udacity: http://data-blog.udacity.com/posts/2016/10/latex-primer/
+vector dot product khan: https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length
+matrix dot product khan: https://www.khanacademy.org/math/linear-algebra/matrix-transformations/composition-of-transformations/v/linear-algebra-matrix-product-examples
+no bs linear algebra has a great
+great intro to nueral networks and back propagation: https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/
+also great details on back prop: https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+and: http://cs231n.github.io/optimization-2/#patters
+
+- Great resource for determining the number of hidden nodes and layers:
+  - http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
 
 ### Notes
 
@@ -66,278 +104,177 @@ Slack: https://nd101.slack.com/messages/announcements/
 
 ### Draft Notes (to clean)
 
-Maybe come back to this video and implmement the nueral network:
-https://classroom.udacity.com/nanodegrees/nd101/parts/2a9dba0b-28eb-4b0e-acfa-bdcf35680d90/modules/329a736b-1700-43d4-9bf0-753cc461bebc/lessons/c3dd053a-7660-4fc5-8bdc-53301ac7ce51/concepts/9f6f9683-3f44-43a3-9d5b-f30fad2b6127
+- Is there a general equation or algorithm of intelligence that we are
+discovering?
 
-http://natureofcode.com/book/chapter-10-neural-networks/
-https://www.oreilly.com/learning/hello-tensorflow
-https://www.tensorflow.org/tutorials/mnist/beginners/
+- Tensor calculus
+  - Vector is a 1d tensor
+  - Matrix is a 2d tensor
+  - List of list of list is a 3d tensor, and so on.
 
-https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+- Libraries used:
+  - pandas
+  - tensorflow
+  - numpy
+  - matplot
 
-Add notes from notebook
-  - Perceptron
-  - single layer feed forward network
+- Activation function is used to calculate the output of a node given its inputs
+  - Sigmoid is an activation function commonly used (also called softmax)
+  - You can also have just linear activation functions
+- The cost function determines how well the model performed
+  - Mean squared error is a common cost function
 
-law of intelligence endcoded in the universe and we are discovering it
+- Logistic regression is the building block of nueral networks.
+  - Think line drawn through two sets of colored points on a graph.
+  - An ideal logic regression line will split the two sets of points in half.
+  - To get an ideal line, gradient descent is used. Step in the direction that
+    minimizes the error count.
 
-tensor calculus
+- Logic regression can have multiple lines that split the data in different
+ways. This is what a nueral network is made up of.
 
-vector is a 1d tensor
-matrix is a 2d tensor
-list of list of list is a 3d tensor, and so on.
+- The perceptron is the base unit of a nueral network
 
-libraries used
-- pandas
-- tensorflow
-- numpy
-- matplot
+- Weights and bias determine the overall importance of an individual perceptron
+or node
 
-softmax = sigmoid (out activation fuction?)
+- Generally, this is how a perceptron works:
+  - Sum all inputs times their respective weights. `sum(input[i] * weight[i])`
+  - Take the summed value above and add a bias
+  - Take the previous value and run it through an activation function
+  - The activation function is used to generate an output value for the entire
+    perceptron.
+  - An example activation function is heaviside which returns 1 if the value is
+    greater than or equal to 0 and returns 0 if the value is less than 0.
 
-cost function - mean squared error
+Simple example perceptron line with data points:
 
----
-
-logistic regression is the building block for nueral networks.
-- think line drawn through two sets of colored points on a graph.
-- an ideal logic regression line will split the two sets of points in half.
-- to get an ideal line, gradient descent is used. step in the direction that
-  minimizes the error count.
-
-a logic regression can have multiple lines that split the data in different
-ways. this is what a nueral network is made up of.
-
-the perceptron is the base unit of a nueral network
-
-weights and bias determine the overall importance of a perceptron
-
-generally, this is how a perceptron works
-- sum all inputs times their respective weights.
-- take the summed value above and add a bias
-- take the previous value and run it through an activation function
-- the activation function is used to generate an output value for the entire
-  perceptron.
-- an example activation function is heaviside which returns 1 if the value is
-  greater than or equal to 0 and returns 0 if the value is less than 0.
-
-an and perceptron would work like the following
-point (0, 0) = 0
-point (0, 1) = 0
-point (1, 0) = 0
-point (1, 1) = 1
-it could be implemented with:
+```
 weight1 = 1.0
 weight2 = 1.0
 bias = -2.0
 
-not, or, and can all be implemented in perceptrons, but they work with ranges of
-values instead of binary values
-you can chain together perceptrons to build an xor nueral network.
+point (0, 0) = 0
+point (0, 1) = 0
+point (1, 0) = 0
+point (1, 1) = 1
+```
+
+- Logic gates (and, or, not) can all be implemented with perceptrons, but they work with ranges of
+values (confidence) instead of binary values.
+- You can chain together perceptrons to build an xor nueral network.
 nueral networks can solve any problem a computer can solve
-- think about logic gates making up a cpu. inefficent though.
-the real power of a nueral network is not building them by hand, but the ability
-for them to set their own weights and biases.
+- Think about logic gates making up a CPU. It'd be pretty inefficent though.
+- The real power of a nueral network is not building them by hand, but the ability
+for them to set their own weights and biases through backprop.  Basically, they
+can learn how to achieve a certain output.
 
-list of common activation functions
-- logistic (sigmoid)
-- tanh
-- softmax
-
-these functions are continous and differentiable which allow training via
+- It's important that activation functions are continous and differentiable which allow training via
 gradient descent (partial derivatives).
 
-sigmoid has an output (y) range of 0 to 1. it can be considered a probability of
+- Sigmoid has an output (y) range of 0 to 1. It can be considered a probability of
 success.
 
----
+- Nueral networks are getting better than humans with things because of their pure
+focus. A nueral network doesn't have any distractions and only knows to do one
+thing. It'd be like a human that knew nothing but chess and didn't get tired or
+distracted or have any feelings and was in many was much less complicated.
 
-nueral networks are getting better than humans with things because of their pure
-focus. a nueral network doesn't have any distractions and only knows to do one
-thing. it'd be like a human that knew nothing but chess and didn't get tired or
-distracted or have any feelings.
-
-Logic gates are powerful, but perceptrons allow them to learn and change
+- Logic gates are powerful, but perceptrons allow them to learn and change
 behavior - adapt. Basically creating a logic flow / program by learning. Learning happens with
 derivatives at the math level.
 
-The current largest network is 1B nuerons - the human brain is 100B. It might
+- The current largest network is 1B nuerons - the human brain is 100B. It might
 take that level of complexity for true human levels of understanding.
 
-It's like a flexible set of logic gates that can be trained to have a certain
+- It's like a flexible set of logic gates that can be trained to have a certain
 output.  The training only takes the inputs and what you'd like the outputs to
 be.
 
-It'd be interesting to train a large neural network to be a standard VM with op
+- It'd be interesting to train a large neural network to be a standard VM with op
 codes and memory.
 
-Originally modeled after human neurons. They can be trained without gradient
-descent, but gradient descent is where much of the underlying power and speed
+- Originally modeled after human neurons. They can be trained without gradient
+descent, and gradient descent is where much of the underlying power and speed
 comes from. It's basically a search function looking for the best possible
-configuration of numbers to make the best network.
+configuration of numbers to make the best network with the lowest error output.
+
+- Khan video on gradient descent:
+  - https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/gradient
+
+- Momentum can be used to avoid falling into local minima with gradient descent
+  - http://sebastianruder.com/optimizing-gradient-descent/index.html#momentum
+
+- Common metric for error function is sum of squared errors (SSE)
+- The square function is nice because:
+  - It keeps all values positive
+  - It penalizes large values with large increases in the overall error
+
+- Gradient is just a vector of slopes
+- Backprop is nothing more than the chain rule applied iteratively.
+- Epocs is the common term used for iterations of training
+
+- Basic list of numpy types:
+  - https://docs.scipy.org/doc/numpy/user/basics.types
 
 ---
 
-Khan video on gradient descent:
-https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/gradient
+- Partial derivative of the error with respect to each of the weights.
+- The sum of squared errors is what we are trying to minimize.
+- The sum of squared errors is what we need partial derivatives for.
+- Since larger inputs drive more error, we scale the weight proportional to this
+term.
+- The resulting gradient tells us the proportional effect of the term on the
+output:
+  - If there's a large gradeint (slope), then a change to the term will have a
+    large effect on the output.
+  - If there's a small gradient, then a change to the term will have a small
+    effect on the output.
+  - Adding this term into the delta adjustment will cause larger gradients to
+    produce larger steps, effecting the change in the error more.
+- Checkout the backprop example in this repo (backprop.py)
 
-Momentum can be used to avoid falling into local minima with gradient descent
-http://sebastianruder.com/optimizing-gradient-descent/index.html#momentum
-
-Common metric for error function is sum of squared errors (SSE)
-the square function is nice because
-- it keeps all values positive
-- it penalizes large values with large increases in error
-
-Gradient = Slope
-
-When doing gradient descent, you derive the activation function.
-
-Neural Net output = activation_function(dot(weights, inputs))
-
-epocs is the number of times to repeat
-
----
-
-https://docs.scipy.org/doc/numpy/user/basics.types
-
-docker run -it gcr.io/tensorflow/tensorflow /bin/bash
-newgrp docker
-
----
-
-partial derivative of the error with respect to each of the weights
-the sum of squared errors is what we are trying to minimize
-the sum of squared errors is what we need partial derivatives for
-since larger inputs drive more error, we scale the weight proportional to this
-term
-the resulting gradient tells us the proportional effect of the term on the
-output
-  - if there's a large gradeint (slope), then a change to the term will have a
-    large effect on the output
-  - if there's a small gradient, then a change to the term will have a small
-    effect on the output
-  - adding this term into the delta adjustment will cause larger gradients to
-    produce larger steps, effecting the change in the error more
-
-delta_j = (target_j - actual_j) * f_prime(unit_input_j)
-delta_w_i_j = learning_rate * delta_j * input_i
-
-to get the hidden unit error, we scale the overall error by the weight
+- To get the hidden unit error, we scale the overall error by the weight
 connecting the ouput to the hidden unit. (how much of the error is the hidden
-weight responsible for)
+weight responsible for).
 
-once you have the error, use this to calculate the gradient descent step
+- Once you have the error, use this to calculate the gradient descent step
 learning rate * ouput unit error * hidden unit activation values (activation
-value is after it went through the sigmoid function)
+value is after it went through the sigmoid function).
 
----
+- Backprop is nothing more than the chain rule applied with an iterative
+approach - basically remembering previous derivaties.
+- When backflowing the gradients, the starting point is the direction of the error
+function derivative, then it goes back thourgh the weighted sums and sigmoid
+applications, it's important to take into account both.
+- The gradient backflow starts with an error as the initial derivate input. It
+either looks to increase the network or decrease it by a step
+- Always try to start with the simplest possible example first and ensure that you
+complete understand it.
+- Take time to rephase things in your own words after reading to ensure you really
+understand it.
+
+- Watch out for returning an flipped matrix into the error function. This
+happened on the first project and caused everything to run slow and not work.
+The fix was to include a transpose on the final result.
+- Gradient is a vector of slopes.
+- A general rule of thumb is for the hidden nodes to be the input and output
+size combined, divided by two.
+- For some great thoughts on how a model should look, reference submission 1
+feedback located in this repository.
+
+Sentiment analysis is basically identifying subjective information in text.
+  - Does the text have a positive tone or negative?
+
+Model Evaluation and Validation
+
+### Docker Notes
 
 docker ps
 docker exec -it ${container_id} /bin/bash
 docker stop ${container_id}
 docker run -p 8888:8888 -p 6006:6006 gcr.io/tensorflow/tensorflow:latest-py3
 
----
-
-history of deep learning: https://vimeo.com/170189199
-understanding back prop: https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.eazs6hdr1
-stanford lecture on back prop: https://www.youtube.com/watch?v=59Hbtz7XgjM
-latex primer from udacity: http://data-blog.udacity.com/posts/2016/10/latex-primer/
-vector dot product khan: https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length
-matrix dot product khan: https://www.khanacademy.org/math/linear-algebra/matrix-transformations/composition-of-transformations/v/linear-algebra-matrix-product-examples
-no bs linear algebra has a great
-great intro to nueral networks and back propagation: https://stevenmiller888.github.io/mind-how-to-build-a-neural-network/
-also great details on back prop: https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
-and: http://cs231n.github.io/optimization-2/#patters
-
-
-var errorOutputLayer = subtract(examples.output, results.outputResult);
-var deltaOutputLayer = dot(results.outputSum.transform(activatePrime), errorOutputLayer);
-var hiddenOutputChanges = scalar(multiply(deltaOutputLayer, results.hiddenResult.transpose()), learningRate);
-var deltaHiddenLayer = dot(multiply(weights.hiddenOutput.transpose(), deltaOutputLayer), results.hiddenSum.transform(activatePrime));
-var inputHiddenChanges = scalar(multiply(deltaHiddenLayer, examples.input.transpose()), learningRate);
-
-errorOutput = targetResult - actualResult
-deltaOutput = sigmoid_prime(outputSum) * errorOutput
-hiddenOutputChanges = (deltaOutput * hiddenResult.transpose) * learningRate
-deltaHidden = sigmoid_prime(hiddenSum) * (hiddenOutput * deltaOutputLayer)
-inputHiddenChanges = (deltaHidden * input.transpose) * learningRate
-
----
-
-review https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
-and http://cs231n.github.io/
-http://staff.itee.uq.edu.au/janetw/cmc/chapters/BackProp/index2.html
-
----
-
-backprop is nothing more than the chain rule applied with an iterative
-approach - basically remembering previous derivaties.
-
-when backflowing the gradients, the starting point is the direction of the error
-function derivative, then it goes back thourgh the weighted sums and sigmoid
-applications, it's important to take into account both.
-
-The gradient backflow starts with an error as the initial derivate input. It
-either looks to increase the network or decrease it by a step
-
-TODO Create simple 2-3-1 neural network with only variable names and show where
-the full derivations come from. Use multiple dimensional array, but index
-everything by hand and don't use sum functions.
-
-Always try to start with the simplest possible example first and ensure that you
-complete understand it.
-
-Take time to rephase things in your own words after reading to ensure you really
-understand it.
-
-Here are the best resources I've found:
-- https://iamtrask.github.io/2015/07/27/python-network-part2/
-- http://iamtrask.github.io/2015/07/12/basic-python-network/
-- http://karpathy.github.io/neuralnets/
-- https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
-- https://en.m.wikipedia.org/wiki/Delta_rule
-- https://en.wikipedia.org/wiki/Chain_rule
-- http://colah.github.io/posts/2015-08-Backprop/
-
-Read up more on these: Gradients, derivates, partial derivates, dot product,
-matrix and vectors, chain rule
-
-Take time to sum up notes to this point.
-
----
-
-add both of these back in
-#self.weights_input_to_hidden += (self.lr * inputs.T * hidden_grad.T)
-#adding T fixed everyinth in the run function
-
-there's a case where both dot and multiplication will return the same value
-3x1 (x/.) 1x2
-
-save feedback
-larger hidden layer takes longer to train
-
-```
-final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output.T)
-final_outputs = final_inputs.T #TODO: Adding a T here sped everything up
-and fixed all issues?
-Sounds like it might have to do with the MSE function below and 1xN vs
-Nx1
-```
-
-Gradient is a vector of slopes. Add this to notes.
-http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
-
----
-
-This book looks great: https://www.manning.com/books/grokking-deep-learning
-
----
-
-Model Evaluation and Validation
-
----
-
-Sentiment analysis is basically identifying subjective information in text.
+docker run -it gcr.io/tensorflow/tensorflow /bin/bash
+newgrp docker
 
