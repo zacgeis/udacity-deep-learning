@@ -397,6 +397,17 @@ for index in self.layer_0_indexes:
 
 - Another issue to watch out for is when things slow down during matrix operations. Ensure that you are using the correct size and dimension matrixes.
 
+### TFLearn notes
+
+```
+net = tflearn.input_data([None, 784]) # image falttened into array
+# ReLU - rectified linear unit - basically max(0, x)
+net = tflearn.fully_connected(net, 200, activation='ReLU')
+net = tflearn.fully_connected(net, 10, activation='softmax')
+# optimizer: stochastic gradient descent, error function categorical cross-entropy
+net = tflearn.regression(net, optimizer='sgd', learning_rate=0.1, loss='categorical_crossentropy')
+```
+
 ### Docker Notes
 
 docker ps
