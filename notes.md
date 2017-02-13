@@ -397,6 +397,18 @@ for index in self.layer_0_indexes:
 
 - Another issue to watch out for is when things slow down during matrix operations. Ensure that you are using the correct size and dimension matrixes.
 
+- Computers can't understand characters, so we use asicc to encode our
+characters as numbers.  Similarly, they can't understand setences.  For Neural
+Networks, you can encode sentences with numbers by having a dictionary of words
+with a number assigned to each, then creating an array for the sentence
+referncing the numer for each word.
+
+- Word embeddings attempt to define words as more than just a single number, and
+add multiple numbers to provide additional context.
+- SkipGram is a neural network that takes a word and tries to predict the words
+around it. This allows the neural network to start learning the abstract meaning
+of words.
+
 ### TFLearn notes
 
 ```
