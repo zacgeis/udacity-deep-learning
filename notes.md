@@ -315,6 +315,88 @@ to fully utilize your dataset.
 - Sentiment analysis is basically identifying subjective information in text.
   - Does the text have a positive tone or negative?
 
+- One way to approach something like sentiment analysis is to look at the
+problem and think how would you approach it if you had to categorize the data
+points manually yourself?  Then try to understand what you are doing manually to
+help drive an automated approach.
+  - Look for what's creating a correlation between the training input and target
+    data sets.
+
+- An example of this is when predicting whether a sentence has a positive or
+negative tone.  If you use the entire sentence for training, it might be great
+for predicting that exact sentce, but fail with sentences that have the same
+meaning just with different words.  If you use the specific letters, it might
+not give you much because both negative and positive words can easily have the
+same letters.  So it's best to land on using words.  Determining how to frame
+the problem is an important step.
+
+- Given a set of movie reviews with a label of positive or negative, how might you
+start approaching the problem?
+
+- Break each review apart by words, then keep track of word counts of words
+found in positive and negative reviews. Once you have the word counts, use log
+on both the pos and neg counts for a word and subtract log(pos) from log(neg).
+This will give you a decent comparison of words that are primarily found in
+negative or positive reviews.
+
+- After I did the steps above, I found that a number of actors names were in the
+top results, so I introduced a minimum total count metric which required a word
+to appear atleast 300 times before considering it a meaningful word.
+
+```
+pos['edie'], neg['edie']
+np.log(1000) - np.log(10)
+np.log(10000) - np.log(9000)
+```
+
+- This is a good way to initialize inputs with numpy: `np.zeros((1, length))`
+
+- "no non-linearity in hidden layer"
+  - This means to have the hidden layer not use an activation function. Instead
+    just use f(x) = x.
+
+- This is an interesting two sided relationship to keep in mind:
+  - Weights control how much an input effects the hidden layer.
+  - Inputs control how much weights effect a hidden layer.
+
+- Neural Networks are basically all about weighting inputs
+  - (Complicated regression models)
+
+- One way to use words as an input to a neural network is to create a fixed size
+vector where each indicy always maps to a single word, then set the indicies to
+0 or 1 depending on if the word appears in a sentence or not.
+  - Always stay trying to think about how to view things numerically
+
+- Take time to frame the problem best:
+	- Always strive to increase the signal and decrease the noise of training data
+	- Make the problem as clear as possible to the neural network
+
+- We made two interesting performance improvements to our neural network:
+- Since our input nodes are always either 1 or 0, we can update the interaction
+between the input and hidden layer to take advantage of the mathemtical
+properties of 1 and 0.
+  - If the node is 1, anything times 1 is itself, so just use the weight values.
+  - If the node is 0, anything times 0 is 0, so just use 0.
+
+- Had a nasty issue that took a while to debug:
+  - I was using a list instead of a set for index values that should have been
+    unique. Pay attention to this moving forward.
+
+- Here are the following changes for the 1 and 0 optimization mentioned above:
+
+```
+# layer_1 = self.layer_0.dot(self.weights_0_1)
+self.layer_1 *= 0
+for index in self.layer_0_indexes:
+	self.layer_1 += self.weights_0_1[index]
+
+# self.weights_0_1 -= self.layer_0.T.dot(layer_1_delta) * self.learning_rate # update input-to-hidden weights with gradient descent step
+for index in self.layer_0_indexes:
+  self.weights_0_1[index] -= layer_1_delta[0] * self.learning_rate
+```
+
+- Another issue to watch out for is when things slow down during matrix operations. Ensure that you are using the correct size and dimension matrixes.
+
 ### Docker Notes
 
 docker ps
@@ -324,4 +406,3 @@ docker run -p 8888:8888 -p 6006:6006 gcr.io/tensorflow/tensorflow:latest-py3
 
 docker run -it gcr.io/tensorflow/tensorflow /bin/bash
 newgrp docker
-
