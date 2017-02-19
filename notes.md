@@ -409,7 +409,9 @@ add multiple numbers to provide additional context.
 around it. This allows the neural network to start learning the abstract meaning
 of words.
 
-### TFLearn notes
+- Intelligence is just information processing.
+
+### TFLearn Notes
 
 ```
 net = tflearn.input_data([None, 784]) # image falttened into array
@@ -419,6 +421,88 @@ net = tflearn.fully_connected(net, 10, activation='softmax')
 # optimizer: stochastic gradient descent, error function categorical cross-entropy
 net = tflearn.regression(net, optimizer='sgd', learning_rate=0.1, loss='categorical_crossentropy')
 ```
+
+### LSTM Notes
+
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+### TensorFlow Notes
+
+tf.constant and tf.placeholder are both immutable tensors
+
+tensorflow is built around the idea of a computational graph.
+
+tensorflow sessions are used to run computational graphs.
+
+You can can session.run multiple times - an example of this is when initalizing
+globabl variables and then running the actual computation graph itself.
+
+placeholders let the graph be more reusable because you can pass any input to
+take place of the placeholder at runtime.
+
+floating point math can cause issues when adding lots of really large numebrs
+with really small numbers.
+to avoid this, it's best to normalize the incoming dataset by having all the
+inputs have 0 mean and equal variance.
+
+what does a large sigma mean and why would it cause the function to have high
+peaks?
+small sigma would mean that your distribution is very uncretain about things?
+
+to get 0 mean and equal variance with image data that has values between 0 and
+255, we take each value and subtract 128, then divide by 128 ((x - 128) / 128)
+
+most machine learning is about designing the right loss function to optimize
+
+stoachistic gradient descent works by selecting a small number of resulsts to
+correct the average loss on instead of calculating the average loss on the
+entire dataset. instead of opimtizing the weights and bias based on the entire
+set of data, chose a small random set to use instead.
+
+because SGD takes you in slightly random directions and isn't as guarnteed as
+just gradient descent, there are a few ways to help optimize it:
+momentum: take a running average of the gradients and use that to guide the
+direction
+learing rate decay: as the process continues, take smaller and smaller steps.
+
+golden rule: when things don't work, always try lowering your learning rate
+first.
+
+byte
+bit
+float
+max range of all numeric types and bit sizes
+
+usually, you run the entire set of data through the neural network as one
+computation.
+if the entire set is too large for your computer's memory, you can use mini
+batching and sgd, which is where you basically break apart your entire set into
+small batches. you try to have all batches of equal size and possibly one that's
+not.
+
+preprocessing the data is normally an important step.
+preprocessing can include cleaning, transforming, and reducing
+this is where you'd update the values to have a mean of 0 and equal small
+variance
+it's also where you can fill in missing values with the set average or remove
+large outliers
+the PCA algorithm can be used to help visualize high dimensional data sets by
+transforming them to lower dimensions.
+
+```
+# 0 dimensional int32 tensor
+tf.constant(1)
+# 1 dimensional int32 tensor
+tf.constant([1, 2, 3])
+# 2 dimensional int32 tensor
+tf.constant([[1, 2, 3], [4, 5, 6]])
+```
+
+### Cheat Sheets
+
+http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
+http://tutorial.math.lamar.edu/pdf/Calculus_Cheat_Sheet_All.pdf
+http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf
 
 ### Docker Notes
 
