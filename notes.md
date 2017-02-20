@@ -21,6 +21,16 @@ Slack: https://nd101.slack.com/messages/announcements/
 - https://www.khanacademy.org/math/multivariable-calculus
   - https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivatives/v/partial-derivatives-introduction
 
+#### Additional Videos
+
+https://youtu.be/BR9h47Jtqyw - Friendly introduction to deep learning
+https://youtu.be/Q9Z20HCPnww - Deep learning dymistiied
+https://youtu.be/FmpDIaiMIeA - How CNNs work
+https://www.destroyallsoftware.com/screencasts/catalog/introduction-to-computation
+https://youtu.be/Ih5Mr93E-2c - Lecture 10 Neural Networks
+https://youtu.be/vq2nnJ4g6N0 - Tensorflow and deeplearning without a PHD
+https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/
+
 #### TODO
 
 - Gradients, partial derivates, dot product, matrix, vectors, chain rule,
