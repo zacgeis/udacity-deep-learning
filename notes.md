@@ -504,6 +504,10 @@ tf.constant([1, 2, 3])
 tf.constant([[1, 2, 3], [4, 5, 6]])
 ```
 
+During the tensorflow non minst lab, I found that lower epocs and higher
+learning rate worked better for the particular dataset. Ended up going with 1
+epoch and 0.1 learning rate.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
