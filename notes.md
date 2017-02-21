@@ -432,6 +432,51 @@ net = tflearn.regression(net, optimizer='sgd', learning_rate=0.1, loss='categori
 
 http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
+RNN are basically networks that can pass an input into the next iteration of the
+network.
+The hidden result in the network is basically an input to the next iteration
+hidden input.
+RNNs struggle to relate datapoints that occur far apart.
+
+LSTMs are a special kind of RNN that don't have trouble relating far apart data
+points.
+
+CNNs can recognize patterns across space and can learn to combine the learned
+patterns.
+
+RNNs can recognize patterns across time and can learn to combine the learned
+patterns.
+
+CNNs look for the same pattern across the various subfields
+
+RNNs feed hidden layers from the previous step as an additional input to the
+next step.  This is how RNNs build up memory.
+
+It's possible to run something like an RNN over an image and treat the time
+aspect as space on the image.
+
+The deepmind atari playing CNN didn't have memory, it just looked at the current
+pixels and determined what the best possible next step was.
+
+CNNs match smaller parts of an image - features of an image
+
+Convultion is a proces of repatedily applying a feature using a filtering
+algorithm across an entire image.
+
+CNN features are generally 2x2 pixels
+
+Great video for CNNS https://www.youtube.com/watch?v=FmpDIaiMIeA&t=111s
+
+CNNs can also be used with sound where the x and y are time and intensity in
+each frequency band.
+
+CNNs can also be used with text where the x and y are position in sentence and
+words in the dictionary.
+
+CNNs are really only useful for spatial data that has local closely related
+patterns. Does the position of the data matter in the x y grid? If not, then CNN
+is probably not useful.
+
 ### TensorFlow Notes
 
 tf.constant and tf.placeholder are both immutable tensors
@@ -507,6 +552,9 @@ tf.constant([[1, 2, 3], [4, 5, 6]])
 During the tensorflow non minst lab, I found that lower epocs and higher
 learning rate worked better for the particular dataset. Ended up going with 1
 epoch and 0.1 learning rate.
+
+Feature scaling approaches:
+https://en.wikipedia.org/wiki/Feature_scaling
 
 ### Cheat Sheets
 
