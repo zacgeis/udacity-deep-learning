@@ -428,116 +428,110 @@ net = tflearn.fully_connected(net, 10, activation='softmax')
 net = tflearn.regression(net, optimizer='sgd', learning_rate=0.1, loss='categorical_crossentropy')
 ```
 
-### LSTM Notes
+### LSTM, RNN, CNN Notes
 
-http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+- Great article: http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
-RNN are basically networks that can pass an input into the next iteration of the
+- RNN are basically networks that can pass an input into the next iteration of the
 network.
-The hidden result in the network is basically an input to the next iteration
+- The hidden result in the network is basically an input to the next iteration
 hidden input.
-RNNs struggle to relate datapoints that occur far apart.
+- RNNs struggle to relate datapoints that occur far apart.
 
-LSTMs are a special kind of RNN that don't have trouble relating far apart data
+- LSTMs are a special kind of RNN that don't have trouble relating far apart data
 points.
-
-CNNs can recognize patterns across space and can learn to combine the learned
+- CNNs can recognize patterns across space and can learn to combine the learned
+patterns.
+- RNNs can recognize patterns across time and can learn to combine the learned
 patterns.
 
-RNNs can recognize patterns across time and can learn to combine the learned
-patterns.
+- CNNs look for the same pattern across the various subfields
 
-CNNs look for the same pattern across the various subfields
-
-RNNs feed hidden layers from the previous step as an additional input to the
+- RNNs feed hidden layers from the previous step as an additional input to the
 next step.  This is how RNNs build up memory.
 
-It's possible to run something like an RNN over an image and treat the time
+- It's possible to run something like an RNN over an image and treat the time
 aspect as space on the image.
 
-The deepmind atari playing CNN didn't have memory, it just looked at the current
+- The deepmind atari playing CNN didn't have memory, it just looked at the current
 pixels and determined what the best possible next step was.
 
-CNNs match smaller parts of an image - features of an image
+- CNNs match smaller parts of an image - features of an image
 
-Convultion is a proces of repatedily applying a feature using a filtering
+- Convultion is a proces of repatedily applying a feature using a filtering
 algorithm across an entire image.
 
-CNN features are generally 2x2 pixels
+- CNN features are generally 2x2 pixels
 
-Great video for CNNS https://www.youtube.com/watch?v=FmpDIaiMIeA&t=111s
+- Great video for CNNS https://www.youtube.com/watch?v=FmpDIaiMIeA&t=111s
 
-CNNs can also be used with sound where the x and y are time and intensity in
+- CNNs can also be used with sound where the x and y are time and intensity in
 each frequency band.
 
-CNNs can also be used with text where the x and y are position in sentence and
+- CNNs can also be used with text where the x and y are position in sentence and
 words in the dictionary.
 
-CNNs are really only useful for spatial data that has local closely related
+- CNNs are really only useful for spatial data that has local closely related
 patterns. Does the position of the data matter in the x y grid? If not, then CNN
 is probably not useful.
 
 ### TensorFlow Notes
 
-tf.constant and tf.placeholder are both immutable tensors
+- tf.constant and tf.placeholder are both immutable tensors
+- tensorflow is built around the idea of a computational graph.
+- tensorflow sessions are used to run computational graphs.
 
-tensorflow is built around the idea of a computational graph.
-
-tensorflow sessions are used to run computational graphs.
-
-You can can session.run multiple times - an example of this is when initalizing
+- You can can session.run multiple times - an example of this is when initalizing
 globabl variables and then running the actual computation graph itself.
 
-placeholders let the graph be more reusable because you can pass any input to
+- tf.placeholders let the graph be more reusable because you can pass any input to
 take place of the placeholder at runtime.
 
-floating point math can cause issues when adding lots of really large numebrs
+- Floating point math can cause issues when adding lots of really large numebrs
 with really small numbers.
-to avoid this, it's best to normalize the incoming dataset by having all the
+- To avoid this, it's best to normalize the incoming dataset by having all the
 inputs have 0 mean and equal variance.
 
-what does a large sigma mean and why would it cause the function to have high
+- What does a large sigma mean and why would it cause the function to have high
 peaks?
-small sigma would mean that your distribution is very uncretain about things?
+- Small sigma would mean that your distribution is very uncretain about things?
 
-to get 0 mean and equal variance with image data that has values between 0 and
-255, we take each value and subtract 128, then divide by 128 ((x - 128) / 128)
+- To get 0 mean and equal variance with image data that has values between 0 and
+255, we take each value and subtract 128, then divide by 128 ((x - 128) / 128).
 
-most machine learning is about designing the right loss function to optimize
+- Most machine learning is about designing the right loss function to optimize.
 
-stoachistic gradient descent works by selecting a small number of resulsts to
+- Stoachistic gradient descent works by selecting a small number of resulsts to
 correct the average loss on instead of calculating the average loss on the
 entire dataset. instead of opimtizing the weights and bias based on the entire
 set of data, chose a small random set to use instead.
 
-because SGD takes you in slightly random directions and isn't as guarnteed as
+- Because SGD takes you in slightly random directions and isn't as guarnteed as
 just gradient descent, there are a few ways to help optimize it:
-momentum: take a running average of the gradients and use that to guide the
-direction
-learing rate decay: as the process continues, take smaller and smaller steps.
+  - momentum: take a running average of the gradients and use that to guide the
+    direction.
+  - learing rate decay: as the process continues, take smaller and smaller steps.
 
-golden rule: when things don't work, always try lowering your learning rate
+- Golden rule: when things don't work, always try lowering your learning rate
 first.
 
-byte
-bit
-float
-max range of all numeric types and bit sizes
+- Know the following:
+  - Byte, Bit, Float, Int, max range for all types, etc.
 
-usually, you run the entire set of data through the neural network as one
+- Usually, you run the entire set of data through the neural network as one
 computation.
-if the entire set is too large for your computer's memory, you can use mini
+- If the entire set is too large for your computer's memory, you can use mini
 batching and sgd, which is where you basically break apart your entire set into
 small batches. you try to have all batches of equal size and possibly one that's
 not.
 
-preprocessing the data is normally an important step.
-preprocessing can include cleaning, transforming, and reducing
-this is where you'd update the values to have a mean of 0 and equal small
-variance
-it's also where you can fill in missing values with the set average or remove
-large outliers
-the PCA algorithm can be used to help visualize high dimensional data sets by
+- Preprocessing the data is normally an important step.
+- Preprocessing can include cleaning, transforming, and reducing.
+- This is where you'd update the values to have a mean of 0 and equal small
+variance.
+- It's also where you can fill in missing values with the set average or remove
+large outliers.
+- The PCA algorithm can be used to help visualize high dimensional data sets by
 transforming them to lower dimensions.
 
 ```
@@ -549,12 +543,54 @@ tf.constant([1, 2, 3])
 tf.constant([[1, 2, 3], [4, 5, 6]])
 ```
 
-During the tensorflow non minst lab, I found that lower epocs and higher
+- During the tensorflow non minst lab, I found that lower epocs and higher
 learning rate worked better for the particular dataset. Ended up going with 1
 epoch and 0.1 learning rate.
 
-Feature scaling approaches:
-https://en.wikipedia.org/wiki/Feature_scaling
+- Feature scaling approaches: https://en.wikipedia.org/wiki/Feature_scaling
+
+### Deep Neural Networks
+
+- Logits are short for logistic regression.
+- ReLU (Rectified linear units) max(0, x) - basically zero out negative weights.
+- Logistic classifier is the same as a logistic regression.
+
+- When building NNs, deeper is generally better than wider.
+- Adding depth over width can be more performant
+- If the problem you are trying to model has an underlying deep hierarchical structure, then
+deeper is better.
+- An example of why deeper is better is during CNN image recogition, the first
+layer generally finds edges and lines, the second layer parital shapes, and by
+the third layer you start seeing objects.
+
+- Tensorflow provides a saver class to help save checkpoints when training a
+model. It can also save the computation graph.
+
+- Tensorflow uses a string identifier for tensors and operations.
+
+- Tensorflow variables allows you to pass in a name which can help avoid errors while
+restoring pervious weights after making adjustments to the model.
+
+- To prevent your network from over optimization, you can use early termination.
+- Early termination is where you watch the growth rate of the loss function and
+terminate as it slows.
+- L2 regularization adds another term to the loss which penalizes large weights.
+- L2 norm is the sum of the squares of the individual elements in a vector.
+- L2 regularization is another way to prevent overfitting.
+
+- Values that travel between layers are generally called activations.
+- Dropout involves dropping random activation values flowing through your network
+to 0.
+- Dropout temporarily drops random units and their inputs and outputs from the network
+- Dropout then forces your network to develop a sort of internal redudancy because
+it can't rely on any one given activation to help achieve its goal.
+- Only use dropout during training to help prevent overfitting.
+- In addition to setting half of the activation values to 0, you should x2 the other non 0
+activation values to keep the overall average similar.
+
+- In Tensorflow, make sure not to apply dropout for the validation or test sets.
+
+- See `examples/dropout_tensorflow.py` for example.
 
 ### Cheat Sheets
 
@@ -571,3 +607,8 @@ docker run -p 8888:8888 -p 6006:6006 gcr.io/tensorflow/tensorflow:latest-py3
 
 docker run -it gcr.io/tensorflow/tensorflow /bin/bash
 newgrp docker
+
+---
+
+docker pull google/cloud-sdk
+docker run -t -i --name gcloud-config google/cloud-sdk gcloud init
