@@ -592,6 +592,59 @@ activation values to keep the overall average similar.
 
 - See `examples/dropout_tensorflow.py` for example.
 
+### Convolutional Networks
+
+- Statistical invariance are facts that don't chang over time or space.
+- The core idea of a convolutional network is to take an image with a width,
+height, and depth, and tranform it through layers that shrink the width and
+height, but increase the layers of depth.  Think of a telescoping animation.
+- CNNs have several layers and each layer will capture a different level in the
+hierarchy of objects (edegs, shapes, objects).
+- In CNNs, the stride is the amount of pixels you move the filter around by.  A
+stride of 2 will provide a new image half the size of the original image.
+- CNNs treat relative location as an important factor.  If pixels are adjacent
+to each other, they are grouped.  In a standard NN, this is not the case.  All
+inputs are mapped to neurons and the relative location of the inputs means
+nothing in the overall calulation.
+- Filter Depth is the overall number of filters in an CNN.
+- Multiple neurons can be helpful in the layers because a single layer might
+have more than one interesting characteristic that you'd like to capture.
+- CNNs aren't programmed to look for specific characteristics, they just learn
+this overtime with forward and backward propogation.
+- In CNNs, weights are shared across all of the various patches.  So if there is
+a dog's face in the top right of the image or the bottom left, the same weights
+will be applied.
+- Padding can be used to adjust the size of the original image to better fit a
+filter size.
+- To calculate the neurons in a layer of an CNN:
+  - W = input layer volume
+  - F = filter volume (width * height * depth)
+  - P = padding used on the input layer
+  - Volume of next layer = (W-F+2P)/S+1
+    - Height of next layer = (input_height - filter_height + 2P) / S + 1
+- Depth of layer is equal to the total number of filters.
+- With weight sharing, you use the same filter for an entire depth slice.
+- Each single nueron represents a pattern that causes it to activate.
+
+- Pooling: Let's you keep a stride of 1 but pool together local fields to
+down sample the input image.  The max function is popular for this, it basically
+grabs a single point and calculates the max values of all neighboring points.
+  - Average pooling also works as an alternative to max pooling.
+  - Pooling is used to decrease ouput size and prevent overfitting
+  - Recently pooling has dropped out of popularity in favor of dropout.
+  - It should also be noted that pooling represents a loss of infomation.
+- 1x1 Convolutions: Add a 1x1 neural network after your convolution.
+- Each layer of the convolution, you can decide what kind of filter you want -
+pooling, 1x1, 3x3, etc.
+- Inception Architecure: Use many layers. Specifically:
+  - Average pooling following by 1x1
+  - 1x1
+  - 1x1 followed by a 3x3
+  - 1x1 followed by a 5x5
+
+- A typical CNN could have multiple fully connected layers, max pooling layers,
+and convolution layers.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
