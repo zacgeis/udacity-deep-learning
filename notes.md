@@ -645,6 +645,11 @@ pooling, 1x1, 3x3, etc.
 - A typical CNN could have multiple fully connected layers, max pooling layers,
 and convolution layers.
 
+- CNNs learn the filters at the convolutional layers
+
+- What does one hot encode mean?
+- Lookup non linear relationship?
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
