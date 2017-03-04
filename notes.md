@@ -682,6 +682,9 @@ http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf
 
 ### Docker Notes
 
+How to install nvidia docker:
+https://github.com/NVIDIA/nvidia-docker
+
 docker ps
 docker exec -it ${container_id} /bin/bash
 docker stop ${container_id}
