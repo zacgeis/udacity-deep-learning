@@ -650,6 +650,24 @@ and convolution layers.
 - What does one hot encode mean?
 - Lookup non linear relationship?
 
+### Project 2
+
+changing sizes did much more than adding layers or removing them.
+input, conv_num_outputs, conv_ksize, conv_strides, pool_ksize,
+pool_strides
+input 32x32x3
+don't always need to change shapes between, two layers can be the same
+size.
+depths were way too low at first
+print(x) to get the shape of each layer
+change back?
+
+relationship between all of these numbers are important
+
+couldn't get the convnet accuracy above 50% and the issue ended up being
+entirely with how i was creating the weights. when i updated the weights to a
+standard deviation of 0.1, everything started working correctly.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
