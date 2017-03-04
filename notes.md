@@ -668,6 +668,12 @@ couldn't get the convnet accuracy above 50% and the issue ended up being
 entirely with how i was creating the weights. when i updated the weights to a
 standard deviation of 0.1, everything started working correctly.
 
+the reason stddev of 0.1 helps is because large weights can result in large
+gradients which can blow up and cause issues during back propogation.
+
+if you see the model quickly getting stuck between numbers, that's generally a
+sign of overfitting.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
