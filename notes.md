@@ -706,22 +706,9 @@ alternatively, if the value is less than 1 it will vanish.
 
 - Characterwise diagram of LSTM is helpful.
 
----
-
-- TensorFlow has a one_hot encoding method - `tf.one_hot(inputs, num_classes)`
-
-tf.squeeze
-tf.reshape
-tf.one_hot
-
-softmax
-
-linear vs non linear
-
-tf.clip_by_global_norm - used for capping gradients to prevent them from
-exploding
-
----
+- linear vs non linear
+  - ReLU is an example of a linear output
+  - Sigmoid is non linear because it returns values between 0 and 1
 
 - Character wise network trained on 1.93mb book was able to start to learn
 english.  The early iterations only showed it learning simple words, but it
@@ -733,6 +720,9 @@ state or when to allow the cell state to get updated.  The cell state itself
 isn't effected by the gradient.
 
 - LSTM was able to somewhat accurately predict stock prices
+
+- Sofmax takes a vector of any numbers and squashes it to numbers only between 0
+and 1.
 
 ### Sytle Transfer
 
@@ -751,6 +741,41 @@ choose in the CNN.
 - Embeddings allow data to be represented with lower dimensional vectors.
 - Word embeddings allow networks to learn things like that a queen is the female
 counterpart of a king.
+
+- One hot encoding doesn't work very well for large vocabularies because you
+have an array of something like 30K 0s.  Instead using vectors to represent the
+number you can have a much smaller size.
+
+- CBOW is used to pass surrounding words to get the inner word and SkipGram is
+used to see what words might be surrounded given a specific word.
+  - SkipGram performs better
+
+- Subsampling is a process where you remove all of the most frequent words from
+a body of text.
+
+- The goal of the skipgram architecture is to basically start with one hot
+encoding, train the network, then use the hidden weights as the lower
+dimensional vector representations.
+
+- Hidden layer weights are the embeddings.
+
+- Since one hot encodings only have a single 1, you can find that row in the
+hidden weights matrix and use that as the embeddings vector.
+
+- Start thinking about the hidden layer as just a two dimensional matrix of
+weights.
+
+- tf.nn.embedding_lookup
+
+- Negative sampling?
+  - Don't udpate the millions of weights in the hidden layer. Only one true
+    target because of of one hot encoding. Make an approximation of the loss by
+    only sampling a small set of the negative results.
+  - tensorflow sampled softmax
+
+- TSNE will take a high dimensional vector and convert it to a 2d dimensional
+vector for viewing.  The interesting property is that it perserves the local
+structure of the higher dimensional data.
 
 ### Cheat Sheets
 
@@ -771,7 +796,15 @@ docker run -p 8888:8888 -p 6006:6006 gcr.io/tensorflow/tensorflow:latest-py3
 docker run -it gcr.io/tensorflow/tensorflow /bin/bash
 newgrp docker
 
----
-
 docker pull google/cloud-sdk
 docker run -t -i --name gcloud-config google/cloud-sdk gcloud init
+
+### Tensorflow Reference
+
+- TensorFlow has a one_hot encoding method - `tf.one_hot(inputs, num_classes)`
+  - tf.squeeze
+  - tf.reshape
+  - tf.one_hot
+  - softmax
+- tf.clip_by_global_norm - used for capping gradients to prevent them from
+exploding
