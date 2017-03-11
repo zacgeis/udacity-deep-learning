@@ -799,6 +799,10 @@ newgrp docker
 docker pull google/cloud-sdk
 docker run -t -i --name gcloud-config google/cloud-sdk gcloud init
 
+https://docs.docker.com/engine/installation/linux/linux-postinstall/
+https://medium.com/@gooshan/for-those-who-had-trouble-in-past-months-of-getting-google-s-tensorflow-to-work-inside-a-docker-9ec7a4df945b#.630zkfjj6
+https://github.com/NVIDIA/nvidia-docker
+
 ### Tensorflow Reference
 
 - TensorFlow has a one_hot encoding method - `tf.one_hot(inputs, num_classes)`
@@ -808,3 +812,6 @@ docker run -t -i --name gcloud-config google/cloud-sdk gcloud init
   - softmax
 - tf.clip_by_global_norm - used for capping gradients to prevent them from
 exploding
+
+- np.stack
+- np.split
