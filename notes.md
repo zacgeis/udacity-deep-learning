@@ -650,29 +650,107 @@ and convolution layers.
 - What does one hot encode mean?
 - Lookup non linear relationship?
 
-### Project 2
+### Project 2 (CIFAR-10 image set, convnets)
 
-changing sizes did much more than adding layers or removing them.
-input, conv_num_outputs, conv_ksize, conv_strides, pool_ksize,
-pool_strides
-input 32x32x3
-don't always need to change shapes between, two layers can be the same
-size.
-depths were way too low at first
-print(x) to get the shape of each layer
-change back?
+- changing sizes did much more than adding layers or removing them.
+- input, conv_num_outputs, conv_ksize, conv_strides, pool_ksize,
+- pool_strides
+- input 32x32x3
+- don't always need to change shapes between, two layers can be the same size.
+- depths were way too low at first
+- print(x) to get the shape of each layer
 
-relationship between all of these numbers are important
+- relationship between all of these numbers are important
 
-couldn't get the convnet accuracy above 50% and the issue ended up being
-entirely with how i was creating the weights. when i updated the weights to a
+- Couldn't get the convnet accuracy above 50% and the issue ended up being
+entirely with how I was creating the weights. When I updated the weights to a
 standard deviation of 0.1, everything started working correctly.
-
-the reason stddev of 0.1 helps is because large weights can result in large
+- The reason stddev of 0.1 helps is because large weights can result in large
 gradients which can blow up and cause issues during back propogation.
-
-if you see the model quickly getting stuck between numbers, that's generally a
+- If you see the model quickly getting stuck between numbers, that's generally a
 sign of overfitting.
+
+### Recurrent Neural Networks (RNNs)
+
+- Feed forward networks only take a single input and have no concept of
+sequence.
+- If we wanted to train a network to guess the next letter, we'd start to see
+issues with the word "steep". "e" is followed by both an "e" and a "p".
+- To get around this issue, we give the network the concept of sequence by
+feeding the hidden input layer into itself.
+
+- Input to the hidden layer is the inputs as normal but an input is the outputs of the
+previous hidden layer.
+
+- One hot encoding is just taking the entire set of possible inputs and creating
+an array of that length. Then setting all values in the array to 0 and just a
+single value to 1 that represents the value.
+  - We can have red, green, or blue. [0, 0, 1] could stand for blue.
+
+- If you are repetively multiplying a number, you either get exploding or
+vanishing results.  If the number is greater than 1, the end value will explode,
+alternatively, if the value is less than 1 it will vanish.
+
+- LSTM (long short term memory)
+  - The first gate is a forget gate
+    - Values close to 0 will mulitply with the cell state and forget.
+    - Values close to 1 will cause the cell state to be remembered.
+  - Update gate
+    - A value is added to the cell state.
+
+- LSTM diagrams are really helpful.
+
+- LSTM lecture: https://www.youtube.com/watch?v=iX5V1WpxxkY
+- Understanding LSTMs blog post: http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+- Implementing LSTMs in TensorFlow: http://r2rt.com/recurrent-neural-networks-in-tensorflow-i.html
+
+- Characterwise diagram of LSTM is helpful.
+
+---
+
+- TensorFlow has a one_hot encoding method - `tf.one_hot(inputs, num_classes)`
+
+tf.squeeze
+tf.reshape
+tf.one_hot
+
+softmax
+
+linear vs non linear
+
+tf.clip_by_global_norm - used for capping gradients to prevent them from
+exploding
+
+---
+
+- Character wise network trained on 1.93mb book was able to start to learn
+english.  The early iterations only showed it learning simple words, but it
+started figuring out longer words, sentence structure, quotations, paragraphs,
+etc.
+
+- What is learned during an LSTM is whether or not to forget the current cell
+state or when to allow the cell state to get updated.  The cell state itself
+isn't effected by the gradient.
+
+- LSTM was able to somewhat accurately predict stock prices
+
+### Sytle Transfer
+
+- Using the pretrained VGG network you can easily do style transfer.
+  - The idea is that an already trained CNN should know most image features.
+  - Instead of using the CNN with full connected layers for classification, the
+    connect layers are removed and it's just used for style transfer.
+- Gradients are used to update the output image and not the weights for style
+transfer.
+
+- We use loss functions for style and content based on hidden layers that we
+choose in the CNN.
+
+### Embeddings and Word2vec
+
+- Embeddings allow data to be represented with lower dimensional vectors.
+- Word embeddings allow networks to learn things like that a queen is the female
+counterpart of a king.
 
 ### Cheat Sheets
 
