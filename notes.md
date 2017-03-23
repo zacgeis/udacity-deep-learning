@@ -777,6 +777,45 @@ weights.
 vector for viewing.  The interesting property is that it perserves the local
 structure of the higher dimensional data.
 
+- Article on Word2vec: http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/
+- Tensorflow guide on Word2vec: https://www.tensorflow.org/tutorials/word2vec
+
+### Floyd Q&A
+
+- Best approach to learning deep learning is to take published journal articles and try to reproduce them.
+- Floyd said the most important thing was delivering a product
+- Start a blog about deep learning
+- Start a personal website
+
+### Interview Prep Notes
+
+- Study schedule and study plan.
+- Don't worry about syntax.
+- Computer science fundamentals.
+
+- Intro To DataStructures (My Code School)
+- Intro To Algorithms (MIT Courseware)
+
+- Cracking the Coding Interview.
+
+- 2 - 3 months of studying each day.
+
+- Send an email to a technical recruiter at the company
+
+### Text Summarizer
+
+- Use word2vec.
+- Glove is also an approach (Global Vectors).
+- 3 stacked lstms.
+- Neural encoder and decoder architecture.
+  - Add attention mechanism to decoder.
+
+### Tensor Board
+
+- You can use namescopes to help group multiple operations into groups.
+- You can use tensorboard to analyze weights (tf.summary.histogram, etc)
+- Iterate over a number of different attempts with the hyper parameters.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
