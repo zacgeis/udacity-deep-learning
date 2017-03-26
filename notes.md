@@ -816,6 +816,35 @@ structure of the higher dimensional data.
 - You can use tensorboard to analyze weights (tf.summary.histogram, etc)
 - Iterate over a number of different attempts with the hyper parameters.
 
+### Initializing Weights
+
+- Ideally, you want small loses?
+
+- Weights all the same (1s, 0s, anything, etc) will cause the gradient to be the
+same across the entire network during backprop which basically prevents
+learning.
+- Having a uniform distribution is important because it means a list of numbers
+is created where the probability of each number being selected is about 0, so
+it's highly unlikely that'd you'd get two of the same number.
+- Having smaller ranges for weight initialization generally lead to stronger
+training.
+- Normal distribution means that the values are centered around 0 generally.
+- Normal distributions tend to perform a little better than uniform
+distribution.
+- Truncated normal distributions are generally the best.  The truncating effect
+removes values that lie outside of 2 standard deviations.
+
+- You can go from 60% to 90% accuracy just by how you initialize the weights.
+
+- Ideal for weights:
+  - Random numbers
+  - Try to have all unique numbers
+  - Both positive and negative
+  - Use a range of [-y, y] where y is 1/sqrt(n) where n is the number of units
+  - Truncated normal distribution.
+    - For smaller sets, non truncated is alright because there are less large
+      outliers.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
@@ -854,3 +883,5 @@ exploding
 
 - np.stack
 - np.split
+
+
