@@ -853,6 +853,9 @@ http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf
 
 ### Docker Notes
 
+You need to pull new images down or they won't get updated:
+docker pull gcr.io/tensorflow/tensorflow:latest-py3
+
 How to install nvidia docker:
 https://github.com/NVIDIA/nvidia-docker
 
@@ -870,6 +873,18 @@ docker run -t -i --name gcloud-config google/cloud-sdk gcloud init
 https://docs.docker.com/engine/installation/linux/linux-postinstall/
 https://medium.com/@gooshan/for-those-who-had-trouble-in-past-months-of-getting-google-s-tensorflow-to-work-inside-a-docker-9ec7a4df945b#.630zkfjj6
 https://github.com/NVIDIA/nvidia-docker
+
+### Reinstalling Nvidia drivers on Google Cloud Compute
+
+Before trying this, just try restarting a few times.
+
+1. `sudo apt-get --purge remove cuda`
+1. wget deb package from here: https://developer.nvidia.com/cuda-downloads
+(`http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb`)
+1. `sudo dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb`
+1. `sudo apt-get update`
+1. `sudo apt-get install cuda`
+1. To test: `nvidia-smi`
 
 ### Tensorflow Reference
 
