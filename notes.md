@@ -108,8 +108,6 @@ and: http://cs231n.github.io/optimization-2/#patters
   - Think of the 3d graph for a multi variable function and slicing it with a
     plane, then using the intersect against that plane to find slope.
 
-### Draft Notes (to clean)
-
 - Is there a general equation or algorithm of intelligence that we are
 discovering?
 
@@ -222,8 +220,6 @@ configuration of numbers to make the best network with the lowest error output.
 
 - Basic list of numpy types:
   - https://docs.scipy.org/doc/numpy/user/basics.types
-
----
 
 - Partial derivative of the error with respect to each of the weights.
 - The sum of squared errors is what we are trying to minimize.
@@ -845,6 +841,110 @@ removes values that lie outside of 2 standard deviations.
     - For smaller sets, non truncated is alright because there are less large
       outliers.
 
+### Project 3: TV Script Generation Notes
+
+- Really happy with the overall experience of this project.
+
+```
+# Number of Epochs
+num_epochs = 30
+# Batch Size
+batch_size = 100 (bumped this to 128 with improvements)
+# RNN Size
+rnn_size = 2
+# Sequence Length
+seq_length = 5 (bumped this to 10 to match the average sentence length of the
+data set)
+# Learning Rate
+learning_rate = 0.01
+# Show stats for every n number of batches
+show_every_n_batches = 5
+```
+
+- The batches had to be lined up with an interesting approach so that the first
+item in each batch was essentially continous with the original contents
+sequence.  If we wouldn't have lined it up this way, it would have incorrectly
+jumped words.  Having to do this makes batching with sequential data more
+difficult.
+
+```
+For exmple, get_batches([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 2,
+3) would return a Numpy array of the following:
+[
+  # First Batch
+  [
+    # Batch of Input
+    [[ 1  2  3], [ 7  8  9]],
+    # Batch of targets
+    [[ 2  3  4], [ 8  9 10]]
+  ],
+
+  # Second Batch
+  [
+    # Batch of Input
+    [[ 4  5  6], [10 11 12]],
+    # Batch of targets
+    [[ 5  6  7], [11 12 13]]
+  ]
+]
+```
+
+- Had an issue where it just returned the first word in the vocab list
+repetitively.  Was able to work through this with changing the hyperparams a
+bit.
+
+- Changing the hyperparams around ended up having a major effect on the
+quality of text generated.
+
+- If I seed the text to start with 'moe_szyslak' it just prints his name
+endlessly.
+- If I seed it with 'homer_simpson' it actually prints decent sentences.
+
+- Increasing batch size and epochs really helped the sentences to form a little
+better.
+
+- First attempt at generating text included a decent amount of repeated text.
+This seems to be because the model was overfit.
+
+- Cell state is basically a tensor of weights that's passed along in a special
+way in LSTMs.
+
+- In this case both the input and target placeholders were int because the input
+was a word index location.
+
+- Started down using the following:
+
+```
+#lstm or rnn size? apparently only rnn size works
+# Use rnn size because it's the input to the fully connected layer
+# rnn_output = tf.reshape(rnn_output, [-1, rnn_size]) # for matmul
+#weight = tf.Variable(tf.truncated_normal((rnn_size, vocab_size), stddev=0.1))
+#bias = tf.Variable(tf.zeros(vocab_size))
+#logits = tf.matmul(rnn_output, weight) + bias
+#logits = tf.nn.relu(logits)
+# not sure if this will work.
+#x, y = input_data.get_shape().as_list()
+#logits = tf.reshape(logits, (x, y, vocab_size))
+```
+
+- Ended up going with:
+
+```
+logits = tf.contrib.layers.fully_connected(rnn_output, vocab_size,activation_fn=None)
+```
+
+- Having a clean vocabulary and clear mental model when trying to solve
+algorithm problems is key.
+- Always try to narrow down smaller and smaller test cases when developing new
+algorithms.
+- Try to identify and handle all the edge cases upfront.
+
+### Martrix Math and NumPy refresher
+
+### Sentiment Prediction RNNo
+
+### Transfer Learning
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
@@ -898,5 +998,3 @@ exploding
 
 - np.stack
 - np.split
-
-
