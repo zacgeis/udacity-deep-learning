@@ -17,4 +17,4 @@ id=`docker build -q .`
 rm Dockerfile
 echo "image build, removing temp dockerfile."
 echo "starting jupyter on port 443."
-$docker_command run -it -p 443:443 -p 8888:8888 -p 6006:60006 -v `pwd`/notebooks:/notebooks $id
+$docker_command run -it -p 443:443 -p 8888:8888 -p 6006:6006 -v `pwd`/notebooks:/notebooks $id
