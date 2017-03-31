@@ -845,7 +845,9 @@ removes values that lie outside of 2 standard deviations.
 
 - Really happy with the overall experience of this project.
 
-```
+- Final hyperparams:
+
+```python
 # Number of Epochs
 num_epochs = 30
 # Batch Size
@@ -868,8 +870,8 @@ jumped words.  Having to do this makes batching with sequential data more
 difficult.
 
 ```
-For exmple, get_batches([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 2,
-3) would return a Numpy array of the following:
+For exmple, get_batches([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 2, 3) would return a Numpy array of the following:
+
 [
   # First Batch
   [
@@ -914,20 +916,19 @@ was a word index location.
 
 - Started down using the following:
 
-```
-#lstm or rnn size? apparently only rnn size works
+```python
+lstm or rnn size? apparently only rnn size works
 # Use rnn size because it's the input to the fully connected layer
-# rnn_output = tf.reshape(rnn_output, [-1, rnn_size]) # for matmul
-#weight = tf.Variable(tf.truncated_normal((rnn_size, vocab_size), stddev=0.1))
-#bias = tf.Variable(tf.zeros(vocab_size))
-#logits = tf.matmul(rnn_output, weight) + bias
-#logits = tf.nn.relu(logits)
-# not sure if this will work.
-#x, y = input_data.get_shape().as_list()
-#logits = tf.reshape(logits, (x, y, vocab_size))
+rnn_output = tf.reshape(rnn_output, [-1, rnn_size]) # for matmul
+weight = tf.Variable(tf.truncated_normal((rnn_size, vocab_size), stddev=0.1))
+bias = tf.Variable(tf.zeros(vocab_size))
+logits = tf.matmul(rnn_output, weight) + bias
+logits = tf.nn.relu(logits)
+x, y = input_data.get_shape().as_list()
+logits = tf.reshape(logits, (x, y, vocab_size))
 ```
 
-- Ended up going with:
+- Ended up going with just:
 
 ```
 logits = tf.contrib.layers.fully_connected(rnn_output, vocab_size,activation_fn=None)
