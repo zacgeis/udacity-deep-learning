@@ -917,7 +917,7 @@ was a word index location.
 - Started down using the following:
 
 ```python
-lstm or rnn size? apparently only rnn size works
+# lstm or rnn size? apparently only rnn size works
 # Use rnn size because it's the input to the fully connected layer
 rnn_output = tf.reshape(rnn_output, [-1, rnn_size]) # for matmul
 weight = tf.Variable(tf.truncated_normal((rnn_size, vocab_size), stddev=0.1))
