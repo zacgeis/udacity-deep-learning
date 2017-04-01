@@ -970,10 +970,78 @@ rnn_size.
 - Went with seq_length of 11 because that was the average sentence length in the
 sample data set.
 - Went with 30 epochs because it appeared to stabilize around there.
+- Always have the batch size as a power of 2 so that tensorflow can handle the
+operations efficently.
 
 ### Martrix Math and NumPy refresher
 
-### Sentiment Prediction RNNo
+- Scalars have zero dimensions (single human height).
+- Vectors have one dimension (list of height, weight, and age).
+  - Row vector is left to right.
+  - Column vector is top to bottom.
+- Matricies have two dimensions.
+  - 2x3 2 rows and 3 columns.
+- Tensors have multi dimensions.
+  - Scalar is 0d tensor.
+  - Vector is 1d tensor.
+  - Matrix is 2d tensor.
+  - Tensor is n-d tensor.
+
+- Numpy allows you to create efficent representations of tensors.
+
+- Element-wise matrix operations allow you to perform a single operation across
+all of the elements in the matrix.
+  - Think scalar multiplication.
+  - Allows you to avoid using loop operations on tensors.
+
+- Adding a scalar to a tensor might look like this:
+  - 2 + [3, 4] = [5, 6]
+
+- Adding two tensors might look like this:
+  - [1, 2] + [3, 4] = [4, 6]
+
+- Element-wise matrix multiplication is different than the matrix product.
+  - Element-wise is just a matter of multiplying each element similar to above
+    - [2, 3] * [2, 5] = [4, 15]
+    - Element-wise also requires matricies of the same size.
+
+- Dot product of two vectors is as follows:
+  - [1, 2, 3] . [3, 4, 5] = (1 * 3) + (2 * 4) + (3 * 5) = 24
+  - Allows you to convert two vectors to a single number.
+
+- Dot product of a matrix is where you take the vector dot product of all of the
+rows in the first matrix against the columns in the second matrix.
+  - You always deal with the rows of the first matrix and the columns of the
+    second matrix.
+  - Every row gets multiplied by every column. The position in the new matrix is
+    which row and column it came from.
+  - If you dot a 2x4 (2 row 4 columns) and 4x3 (4 row 3 columns) the resulting
+    matrix is 2x3 (2 rows 3 columns). Rows comes from the first matrix and
+    columns come from the second matrix.
+  - For this operation to work, the rows of the first matrix need to be of the
+    same length as the columns of the second matrix. (because it relies on
+    the vector product).
+      - 2x3 . 3x2 will work because the the rows in the the first have a length
+        of 3 and the columns in the second have a length of 3 as well.
+  - Changing the shape of matricies before dotting them can have a large impact
+    on the output.
+
+- Order matters in matrix dot products. It's not communative.
+  - 2x3 . 3x2 = 2x2
+  - 3x2 . 2x3 = 3x3
+
+- Numpy's matmul and dot will return the same value for two dimensional
+matricies. They only differ in how they broadcast for higher dimensions.
+
+- Transpose allows you to keep the same numbers but to rearrange the shape of a
+tensor.
+  - Before using transpose, ensure that both matricies have their data aligned
+    in rows and that the resulting transpose won't cause a conflict across data
+    and records.
+  - Always stop and think about what's actually in the matrix and how the
+    transpose will effect it.
+
+### Sentiment Prediction RNNs
 
 ### Transfer Learning
 
