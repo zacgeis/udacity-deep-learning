@@ -940,6 +940,37 @@ algorithm problems is key.
 algorithms.
 - Try to identify and handle all the edge cases upfront.
 
+- Feedback from the first submission:
+  - Add randomness to the pick_word function to prevent potentially repetitive
+    words.
+  - The embedding dimensions should not be hard coded, but instead should be
+    based on the rnn_size.
+  - Don't hard code size of LSTM, that should be variable in the hyperparams.
+  - Use `_input` instead of `input` for name to avoid overlap with tf.
+- The following hyperparams were suggested:
+
+```
+num_epochs = [ 20, 400]
+batch_size = [ 25, 256] : Depend mainly on the power of your computer ;)
+rnn_size = [ 25, 512] : Big means more complex structure of the dialogue to
+learn.
+seq_length = [5, 50] : As each speech are not very long, this should represent
+the mean length of sentence.
+learning_rate = [0.001, 0.01] : Low to understand the structure of the text
+The values of hyper parameters should be power of 2. Tensorflow optimizes our
+computation if we do so.
+```
+
+- Ended up changing out the pick_word function to use numpy random.choice which
+lets you pass a list of probabilities and it then picks from the list with those
+probabilities.
+- Updated both hard coded lstm size and embedding size to match the hyperparam
+rnn_size.
+- Went with an rnn size of 256.
+- Went with seq_length of 11 because that was the average sentence length in the
+sample data set.
+- Went with 30 epochs because it appeared to stabilize around there.
+
 ### Martrix Math and NumPy refresher
 
 ### Sentiment Prediction RNNo
