@@ -1064,6 +1064,30 @@ last output correctly.
 
 ### Transfer Learning
 
+### Language Translation Network
+
+- We can use a similar network to the Sentiment Predictions RNN above, but
+instead of having a sigmoid output, use the final cell state as the output.
+This basically encodes the meaning of the entire setence or sequence of words
+similar to how word2vec endocdes words as vectors.
+  - Using this approach is limited because the hidden state is only so large and
+    it can't capture large sentences.
+- This is called an encoder decoder framework.
+
+### Chatbot
+
+- Question answering system is the official term for a Chatbot.
+- Originally they were rule based.
+- Example:
+  - There is a dog. The dog is black.
+  - What color is the dog? black.
+- Facebook built a network similar to an LSTM, but that had an external memory
+component which allowed it to store data on much larger bodies of text like
+entire books.
+- Dynamic Memory Networks are the current state of the art in Q&A systems.
+  - Outputs hidden states after every sentence and stores them.
+- Neural networks can actually apply logical reasoning.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
