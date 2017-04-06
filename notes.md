@@ -1043,6 +1043,25 @@ tensor.
 
 ### Sentiment Prediction RNNs
 
+- Layers used for RNN sentiment prediction network:
+  - input layer, embed layer, LSTM layer, sigmoid layer.
+    - LSTMs connect across layers within the network.
+- Embedding is more efficent than one hot encoding.
+- If you pad the sequence values with 0s, you have to start word encodings at 1
+to avoid confusing the network.
+- Truncate all incoming reviews to just 200 words to make network more
+performant.
+  - For reviews that are less than 200 words, just pad to the left with 0s.
+- Increase layers if you think the network is underfitting.
+  - Use nornmalization techniques like dropout to avoid overfitting with deep
+    layers.
+- Batch_size should always be the highest number your computer can handle.
+- Cell state is the tensor that's passed between LSTM cells.
+
+- When predicting sentiment with an LSTM network, we only care about the last
+sigmoid output. This is fine as long as we set our loss function to use only the
+last output correctly.
+
 ### Transfer Learning
 
 ### Cheat Sheets
