@@ -1054,7 +1054,7 @@ performant.
   - For reviews that are less than 200 words, just pad to the left with 0s.
 - Increase layers if you think the network is underfitting.
   - Use nornmalization techniques like dropout to avoid overfitting with deep
-    layers.
+  layers.
 - Batch_size should always be the highest number your computer can handle.
 - Cell state is the tensor that's passed between LSTM cells.
 
@@ -1064,6 +1064,33 @@ last output correctly.
 
 ### Transfer Learning
 
+- The idea is to take an already trained network like AlexNet or VGGNet and just
+change the last few layers for your own classification.
+- The benifit is that you don't have to train the entire network from scratch,
+which in some cases can be expensive and take a while.
+
+### Sequence To Sequence
+
+- Two RNNs, the first is an encoder and the second is a decoder.
+  - Translate from english to french.
+  - Summarization of news articles.
+  - Question and answer bot.
+  - Dialog data - chat bot.
+  - Imagine captioning.
+- The understanding vector is a fixed size vector that is the state of the first
+encoder rnn.
+- Encoder summarizes what it saw into it's context vector and hands it off to
+the decoder.
+- RNNs have the concept of time steps.
+
+- Seq2Seq networks generally reserve the first 4 vocabulary spots for:
+  - <PAD> used for padding inputs to the same length.
+  - <EOS> lets the decoder know it's the end of a sentence.
+  - <UNK> used to ignore words that don't show up often or that you don't care
+  about - makes training the model more efficent.
+  - <GO> use this input as the first timestep to the decoder to let it know that
+  you want to start generating output.
+
 ### Language Translation Network
 
 - We can use a similar network to the Sentiment Predictions RNN above, but
@@ -1071,7 +1098,7 @@ instead of having a sigmoid output, use the final cell state as the output.
 This basically encodes the meaning of the entire setence or sequence of words
 similar to how word2vec endocdes words as vectors.
   - Using this approach is limited because the hidden state is only so large and
-    it can't capture large sentences.
+  it can't capture large sentences.
 - This is called an encoder decoder framework.
 
 ### Chatbot
@@ -1087,6 +1114,26 @@ entire books.
 - Dynamic Memory Networks are the current state of the art in Q&A systems.
   - Outputs hidden states after every sentence and stores them.
 - Neural networks can actually apply logical reasoning.
+
+### Reinforcement Learning
+
+- Let an agent guide decisions in a game and train a network based on if it succeeded
+or not.
+- Q-Learning is based on states and actions
+  - States contain all information about the current state of the game.
+  - Actions are actions that can update the state.
+  - You can model this as a graph where states are the nodes and actions are the
+  edges.
+- A Q-Tables is created to decide on which actions should be taken given a
+certain state. (float64 table)
+  - Rows correspond to states
+  - Columns correspond to actions
+- Find row for current state, then take the action with the highest float
+value
+- Let the agent explore the environment and update the Q-Table with its
+learnings.
+- Neural networks can be used to approximate the Q-Learning function.
+- There's always a trade off between the exploration and exploitation phases.
 
 ### Cheat Sheets
 
