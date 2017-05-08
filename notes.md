@@ -1135,6 +1135,28 @@ learnings.
 - Neural networks can be used to approximate the Q-Learning function.
 - There's always a trade off between the exploration and exploitation phases.
 
+### How to generate images
+
+- Auto encoders are considered a data compression algorithm.
+- They can only compress data similar to what they've been trained on.
+
+### Auto Encoders
+
+- Auto encoders can be used for denoising images.
+- General structure
+  - Encoder Network -> Compressed Data -> Decoder Network
+- For the MINST data set, you can follow something like this:
+  - Input layer -> Hidden layer -> Output layer
+  - Pass the 784 pixels into the input layer and the output goal should be the
+  same 784 pixles. The hidden layer should be smaller than 784 to create the
+  compression.
+
+### General Adversarial Network
+
+- The general idea is to have two networks. One to generate content and one to
+test if content it real or not, and you set them against each other.
+- GANs are used to generate realistic data
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
