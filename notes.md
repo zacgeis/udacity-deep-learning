@@ -1157,6 +1157,27 @@ learnings.
 test if content it real or not, and you set them against each other.
 - GANs are used to generate realistic data
 
+### One-Shot Learning
+
+- All deep learning approaches share the following in common:
+  - Use a hierarchy of layers
+  - Use differentiable layers
+- Neural turing machines (Google deep mind)
+- Meta learning systems learn how to perform well at a specific task, but also
+pay attention over time on finding similarities between tasks.
+
+### Hyperparameters
+
+Two categories:
+1. Optimization params (learning rate, epocs, etc)
+1. Model params (layer size, etc)
+
+- Mini batch size should generally be between 32 and 256.
+- Early stopping watches the validation error and stops when the error stops
+decreasing over a certain period.
+- Generally for a fully connected network, 3 hidden layers works the best.
+- 50 - 200 is usually a good embedding size.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
