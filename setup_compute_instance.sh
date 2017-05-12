@@ -8,3 +8,8 @@ if ! dpkg-query -W cuda; then
   apt-get update
   apt-get install cuda -y
 fi
+
+apt-get install python3-pip -y
+pip3 install --upgrade pip
+pip3 install tensorflow-gpu
+pip3 install jupyter
