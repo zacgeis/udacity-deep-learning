@@ -1183,6 +1183,8 @@ decreasing over a certain period.
 - If you are having trouble getting the generator loss below the descriminator
 loss, you can either increase the depth of the generator, decrease the depth of
 the descriminator, or weaken the descriminator via a higher learning rate.
+- https://medium.com/@awjuliani/generative-adversarial-networks-explained-with-a-classic-spongebob-squarepants-episode-54deab2fce39
+- http://wiseodd.github.io/techblog/2016/12/24/conditional-gan-tensorflow/
 
 ### Cheat Sheets
 
@@ -1191,6 +1193,8 @@ http://tutorial.math.lamar.edu/pdf/Calculus_Cheat_Sheet_All.pdf
 http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf
 
 ### Docker Notes
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 You need to pull new images down or they won't get updated:
 docker pull gcr.io/tensorflow/tensorflow:latest-py3
