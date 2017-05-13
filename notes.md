@@ -1178,6 +1178,12 @@ decreasing over a certain period.
 - Generally for a fully connected network, 3 hidden layers works the best.
 - 50 - 200 is usually a good embedding size.
 
+### CGAN Project
+
+- If you are having trouble getting the generator loss below the descriminator
+loss, you can either increase the depth of the generator, decrease the depth of
+the descriminator, or weaken the descriminator via a higher learning rate.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
