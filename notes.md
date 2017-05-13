@@ -1186,6 +1186,18 @@ the descriminator, or weaken the descriminator via a higher learning rate.
 - https://medium.com/@awjuliani/generative-adversarial-networks-explained-with-a-classic-spongebob-squarepants-episode-54deab2fce39
 - http://wiseodd.github.io/techblog/2016/12/24/conditional-gan-tensorflow/
 
+Feedback:
+
+- Use kernel size of 3 to generate more detail.
+- Initialize weights yourself for convs to help accuracy.
+- Don't start the generator with an image size of 2. It's too small of an image.
+  - 4x4 should be a reasonable size here. Having this provides more detail to
+  the descrim.
+- Add label smoothing in the model_loss. Change descriminator's real loss from 1
+to 0.9.
+- Remove additional generator training passes.
+- Move step addition.
+
 ### Cheat Sheets
 
 http://www.souravsengupta.com/cds2016/lectures/Savov_Notes.pdf
